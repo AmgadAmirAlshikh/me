@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أمجد أمير الشيخ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F6F5F1;
+    --surface: #FFFFFF;
+    --ink: #17201C;
+    --ink-soft: #55605A;
+    --line: #E1DED4;
+    --accent: #1E6E63;
+    --accent-soft: #E7F0EC;
+    --amber: #C97D2E;
+    --display: 'Space Grotesk', sans-serif;
+    --sans: 'IBM Plex Sans Arabic', 'IBM Plex Sans', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height:1.8;
+  }
+  .wrap{ max-width: 1080px; margin:0 auto; padding: 0 28px; }
+
+  /* NAV */
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+    position: sticky; top: 0; background: var(--bg); z-index: 10;
+  }
+  .brand{
+    font-family: var(--display);
+    font-weight:700;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+  }
+  .navlinks{ display:flex; gap: 26px; list-style:none; }
+  .navlinks a{ color: var(--ink-soft); text-decoration:none; font-size: 0.92rem; }
+  .navlinks a:hover{ color: var(--accent); }
+
+  /* HERO */
+  .hero{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items:end;
+    padding: 64px 0 80px;
+  }
+  .eyebrow{ color: var(--accent); font-weight:600; font-size: 0.9rem; margin-bottom: 14px; }
+  h1{
+    font-family: var(--display);
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 700; letter-spacing: -0.01em; line-height:1.15;
+    margin-bottom: 14px;
+  }
+  .hero-desc{ color: var(--ink-soft); font-size: 1.05rem; max-width: 48ch; margin-bottom: 28px; }
+  .cta-row{ display:flex; gap: 14px; flex-wrap:wrap; }
+  .btn{
+    display:inline-block; padding: 13px 24px; border-radius: 8px;
+    font-weight:600; font-size: 0.92rem; text-decoration:none;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .btn-primary{ background: var(--accent); color:#fff; }
+  .btn-primary:hover{ background:#175a51; transform: translateY(-1px); }
+  .btn-ghost{ background: transparent; color: var(--ink); border: 1px solid var(--line); }
+  .btn-ghost:hover{ border-color: var(--accent); color: var(--accent); }
+
+  .portrait{
+    position:relative;
+    aspect-ratio: 4/5;
+    border-radius: 18px;
+    background: linear-gradient(180deg, var(--accent-soft), #DCE9E2);
+    border: 1px solid var(--line);
+    display:flex; align-items:flex-end; justify-content:center;
+    overflow:hidden;
+  }
+  .portrait img{ width:100%; height:100%; object-fit: cover; object-position: top center; }
+  .portrait .tag{
+    position:absolute; bottom: 16px; inset-inline-start: 16px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+    padding: 8px 14px; font-family: var(--display); font-size: 0.78rem; font-weight:600;
+  }
+
+  /* SECTIONS */
+  section{ padding: 64px 0; border-top: 1px solid var(--line); }
+  .section-head{ margin-bottom: 34px; }
+  .section-head .eyebrow{ margin-bottom: 8px; }
+  .section-head h2{ font-family: var(--display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; }
+
+  .about-article{ display:flex; flex-direction:column; gap: 28px; }
+  .about-article .lede{ font-size: 1.08rem; color: var(--ink); max-width: 68ch; }
+  .about-block{
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 26px 28px;
+  }
+  .about-block h3{ font-family: var(--display); font-size: 1.08rem; margin-bottom: 10px; color: var(--accent); }
+  .about-block p{ color: var(--ink-soft); font-size: 0.98rem; }
+  .about-block p + p{ margin-top: 10px; }
+
+  /* LINKS GRID */
+  .links-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  }
+  .links-grid a{
+    display:flex; align-items:center; gap: 14px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 16px 18px; text-decoration:none; color: var(--ink);
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .links-grid a:hover{ border-color: var(--accent); background: var(--accent-soft); }
+  .icon{
+    width: 36px; height:36px; border-radius: 8px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    background: var(--accent-soft); color: var(--accent);
+    font-family: var(--display); font-weight:700; font-size: 0.85rem;
+  }
+  .link-text .name{ font-weight:600; font-size: 0.95rem; display:block; }
+  .link-text .handle{ color: var(--ink-soft); font-size: 0.8rem; direction:ltr; display:block; text-align: right; }
+
+  /* CONTACT */
+  .contact-box{
+    background: var(--ink); color: #fff; border-radius: 16px; padding: 48px; text-align:center;
+  }
+  .contact-box h2{ font-family: var(--display); font-size: 1.7rem; margin-bottom: 12px; }
+  .contact-box p{ color: #C9D2CC; margin-bottom: 22px; }
+  .contact-box .btn-row{ display:flex; gap: 12px; justify-content:center; flex-wrap:wrap; }
+  .contact-box .btn-primary{ background: var(--amber); }
+  .contact-box .btn-primary:hover{ background:#a86523; }
+  .contact-box .btn-ghost{ border-color:#3A443F; color:#fff; }
+  .contact-box .btn-ghost:hover{ border-color: var(--amber); color: var(--amber); }
+
+  footer{ padding: 32px 0 48px; text-align:center; color: var(--ink-soft); font-size: 0.85rem; }
+
+  @media (max-width: 760px){
+    .navlinks{ display:none; }
+    .hero{ grid-template-columns: 1fr; padding-top: 32px; }
+    .portrait{ order:-1; aspect-ratio: 4/3; }
+    .links-grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px){
+    .links-grid{ grid-template-columns: 1fr; }
+  }
+
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <div class="brand">أمجد أمير الشيخ</div>
+    <ul class="navlinks">
+      <li><a href="#about">عني</a></li>
+      <li><a href="#links">اللينكات</a></li>
+      <li><a href="#contact">تواصل</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" style="border-top:none;">
+    <div>
+      <div class="eyebrow">مصري — إسكندراني — طالب IT وتاجر أسواق مالية</div>
+      <h1>أمجد أمير الشيخ</h1>
+      <p class="hero-desc">طالب تكنولوجيا معلومات، وأتداول في البورصة المصرية. مؤمن بإن الطموح والتجربة المستمرة هما الطريق لتحقيق الأحلام.</p>
+      <div class="cta-row">
+        <a href="#about" class="btn btn-primary">اقرأ عني</a>
+        <a href="#links" class="btn btn-ghost">تابعني</a>
+      </div>
+    </div>
+    <div class="portrait">
+      <img src="profile.png" alt="أمجد أمير الشيخ">
+      <div class="tag">الإسكندرية، مصر</div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head">
+      <div class="eyebrow">أهلاً بك</div>
+      <h2>عني</h2>
+    </div>
+    <div class="about-article">
+      <p class="lede">
+        وجودك هنا شرفٌ كبيرٌ لي، ويسعدني أن أستغل هذه الفرصة لأعرّفك بنفسي بشكل أكبر. أنا أمجد أمير الشيخ، مصري الجنسية، وُلِدتُ ونشأتُ في مدينة الإسكندرية. أعتز بهويتي، وأؤمن بأن الطموح والسعي المستمر هما الطريق لتحقيق الأحلام. أسعى دائمًا إلى تطوير نفسي وخوض تجارب جديدة، وأؤمن يقينًا بأن الله لا يضيع أجر من أحسن عملًا.
+      </p>
+
+      <div class="about-block">
+        <h3>الدراسة والشغف</h3>
+        <p>أنا طالب في مجال تكنولوجيا المعلومات (IT) في جامعة برج العرب التكنولوجية بالإسكندرية. منذ صغري، كان هذا المجال أحد أكثر ما يثير اهتمامي، وازداد شغفي به يومًا بعد يوم.</p>
+        <p>أطمح بعد إتمام دراستي الجامعية إلى السفر لمواصلة تعليمي والتخصص في هندسة البرمجيات، والسعي لبناء مستقبل مهني مميز في هذا المجال.</p>
+      </div>
+
+      <div class="about-block">
+        <h3>العمل والتجارة</h3>
+        <p>على الرغم من حبي الكبير لمجال تكنولوجيا المعلومات، فإن عملي الحالي بعيد عن هذا المجال؛ فأنا أعمل تاجرًا في أسواق المال، وأتداول في البورصة المصرية.</p>
+        <p>أطمح في المستقبل القريب إلى توسيع نشاطي والانتقال إلى التداول في الأسواق الأمريكية، لما توفره من فرص وأسواق متنوعة.</p>
+      </div>
+
+      <div class="about-block">
+        <h3>الهوايات والتجارب</h3>
+        <p>أعتبر نفسي شخصًا متعدد الاهتمامات؛ لا أحب أن أحصر نفسي في هواية واحدة، بل أستمتع دائمًا باكتشاف اهتمامات جديدة. خضت تجارب من بينها ركوب الدراجات النارية، وصيد الأسماك، وتربية الحمام، والسباحة، ولعب البلياردو.</p>
+        <p>ومن الهوايات اللي بخطط أجربها مستقبلًا: الفروسية، والدرفت، ولعب الشطرنج، وصيد الطيور.</p>
+      </div>
+
+      <div class="about-block">
+        <h3>نظرتي إلى الحياة الزوجية</h3>
+        <p>لا أرى الزواج مجرد اجتماع رجل وامرأة، بل أراه شراكة حقيقية بين شخصين يختاران أن يشاركا حياتهما معًا. الشخص المناسب بالنسبة لي لا يُقاس بوضعه المادي أو الاجتماعي، وإنما بما يجمعه معي من توافق فكري وطموح ومعتقدات وقيم ونظرة مشتركة للحياة.</p>
+      </div>
+
+      <div class="about-block">
+        <h3>الرياضة</h3>
+        <p>أمر حاليًا بأصعب فتراتي الرياضية، ليس بسبب فقدان الاهتمام، وإنما نتيجة انشغالي بالدراسة والعمل. ما زلت أؤمن بأن العقل السليم في الجسم السليم، وأتطلع للعودة قريبًا لحياتي الرياضية.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="links">
+    <div class="section-head">
+      <div class="eyebrow">تلاقيني هنا</div>
+      <h2>اللينكات</h2>
+    </div>
+    <div class="links-grid" id="linksGrid"></div>
+  </section>
+
+  <section id="contact" style="border-top:none;">
+    <div class="contact-box">
+      <h2>عايز تتواصل؟</h2>
+      <p>ابعتلي إيميل أو واتساب وهرد عليك.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="mailto:amgadamiralshikh@gmail.com">amgadamiralshikh@gmail.com</a>
+        <a class="btn btn-ghost" href="https://wa.me/message/JMG36CGQXRW7L1" target="_blank" rel="noopener noreferrer">واتساب</a>
+      </div>
+    </div>
+  </section>
+
+  <footer id="siteFooter"></footer>
+</div>
+
+<script>
+/* ============================================================
+   عدّل لينكاتك هنا بس - الصفحة هتتحدث تلقائي
+   Edit your links here only — the page updates automatically.
+   ============================================================ */
+const LINKS = [
+  { name: "يوتيوب",   handle: "@AmgadAmirAlshikh", url: "https://www.youtube.com/@AmgadAmirAlshikh", icon: "YT" },
+  { name: "فيسبوك",   handle: "AmgadAmirAlshikh",   url: "https://www.facebook.com/AmgadAmirAlshikh", icon: "FB" },
+  { name: "انستجرام", handle: "@amgadamiralshikh",  url: "https://www.instagram.com/amgadamiralshikh", icon: "IG" },
+  { name: "تيك توك",  handle: "@amgadamiralshikh",  url: "https://www.tiktok.com/@amgadamiralshikh", icon: "TT" },
+  { name: "إكس",      handle: "@AmgadAmrAlshikh",   url: "https://x.com/AmgadAmrAlshikh", icon: "X" },
+  { name: "ثريدز",    handle: "@amgadamiralshikh",  url: "https://www.threads.com/@amgadamiralshikh", icon: "TH" },
+  { name: "لينكدإن",  handle: "amgadamiralshikh",   url: "https://www.linkedin.com/in/amgadamiralshikh", icon: "in" },
+  { name: "جيت هاب",  handle: "AmgadAmirAlshikh",   url: "https://github.com/AmgadAmirAlshikh", icon: "GH" },
+  { name: "تويتش",    handle: "amgadamiralshikh",   url: "https://www.twitch.tv/amgadamiralshikh", icon: "TV" },
+  { name: "تيليجرام", handle: "@AmgadAmirAlshikh",  url: "https://t.me/AmgadAmirAlshikh", icon: "TG" },
+  { name: "واتساب",   handle: "تواصل مباشر",        url: "https://wa.me/message/JMG36CGQXRW7L1", icon: "WA" },
+  { name: "إنستاباي", handle: "amgadamiralshikh",   url: "https://ipn.eg/S/amgadamiralshikh/instapay/0MR7Es", icon: "IP" }
+  // زود أو احذف سطر هنا لأي لينك تاني
+];
+/* ============================================================ */
+
+const grid = document.getElementById("linksGrid");
+LINKS.forEach(link => {
+  const a = document.createElement("a");
+  a.href = link.url;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+  a.innerHTML = `<span class="icon">${link.icon}</span><span class="link-text"><span class="name">${link.name}</span><span class="handle">${link.handle}</span></span>`;
+  grid.appendChild(a);
+});
+
+document.getElementById("siteFooter").textContent = `© ${new Date().getFullYear()} أمجد أمير الشيخ`;
+</script>
+
+</body>
+</html>
